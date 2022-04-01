@@ -11,7 +11,7 @@ import { BookDetailsComponent } from './book-details/book-details.component';
     AppComponent,
     BookListComponent,
     BookListItemComponent,
-    BookDetailsComponent,
+    BookDetailsComponent
   ],
   imports: [
     BrowserModule

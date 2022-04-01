@@ -9,14 +9,15 @@ import {Book} from "./shared/book";
 export class AppComponent {
   listOn = true;
   detailsOn = false;
-  book: Book | undefined;
 
-  showList(){
+  book: Book | undefined
+
+  showList() {
     this.listOn = true;
     this.detailsOn = false;
   }
 
-  showDetails(book:Book){
+  showDetails(book: Book) {
     this.book = book;
     this.listOn = false;
     this.detailsOn = true;

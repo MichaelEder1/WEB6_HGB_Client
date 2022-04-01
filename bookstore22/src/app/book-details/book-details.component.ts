@@ -4,23 +4,23 @@ import {Book} from "../shared/book";
 @Component({
   selector: 'bs-book-details',
   templateUrl: './book-details.component.html',
-  styles: []
+  styles: [
+  ]
 })
 export class BookDetailsComponent implements OnInit {
-
-  @Input() book: Book | undefined;
+  @Input() book: Book | undefined
   @Output() showListEvent = new EventEmitter<any>();
-  constructor() {
-  }
+
+  constructor() { }
 
   ngOnInit(): void {
   }
 
-  getRating(num: number) {
-    return new Array(num);
-  }
-
   showBookList(){
     this.showListEvent.emit();
+  }
+
+  getRating(num:number){
+    return new Array(num);
   }
 }

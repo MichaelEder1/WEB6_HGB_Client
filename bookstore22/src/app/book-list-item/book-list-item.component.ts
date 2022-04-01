@@ -1,19 +1,20 @@
-import {Component, OnInit, Input, Output} from '@angular/core';
-import {Book} from '../shared/book';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {Book} from "../shared/book";
 
 @Component({
   selector: 'a.bs-book-list-item',
   templateUrl: './book-list-item.component.html',
-  styles: []
+  styles: [
+  ]
 })
 export class BookListItemComponent implements OnInit {
 
-  @Input() book: Book | undefined;
+  @Input() book: Book | undefined
 
-  constructor() {
-  }
+  constructor() { }
 
   ngOnInit(): void {
   }
+
 
 }
