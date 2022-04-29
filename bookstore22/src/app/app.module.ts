@@ -8,9 +8,16 @@ import {BookDetailsComponent} from './book-details/book-details.component';
 import {BookStoreService} from "./shared/book-store.service";
 import {HomeComponent} from './home/home.component';
 import {AppRoutingModule} from "./app-routing.module";
-import {HttpClientModule} from "@angular/common/http";
+import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import {ToastrModule} from "ngx-toastr";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
+import {SearchComponent} from './search/search.component';
+import {BookFormComponent} from './book-form/book-form.component';
+import {ReactiveFormsModule} from "@angular/forms";
+import {LoginComponent} from './login/login.component';
+import {AuthentificationService} from "./shared/authentification.service";
+import {TokenInterceptorService} from "./shared/token-interceptor.service";
+import {LoginInterceptorService} from "./shared/login-interceptor.service";
 
 @NgModule({
   declarations: [
@@ -19,11 +26,30 @@ import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
     BookListItemComponent,
     BookDetailsComponent,
     HomeComponent,
+    SearchComponent,
+    BookFormComponent,
+    LoginComponent,
   ],
   imports: [
-    BrowserModule, AppRoutingModule, HttpClientModule, ToastrModule.forRoot(), BrowserAnimationsModule
+    BrowserModule,
+    AppRoutingModule,
+    HttpClientModule,
+    ToastrModule.forRoot(),
+    BrowserAnimationsModule,
+    ReactiveFormsModule
   ],
-  providers: [BookStoreService],
+  providers: [BookStoreService, AuthentificationService,
+    {
+    provide: HTTP_INTERCEPTORS,
+    useClass: TokenInterceptorService,
+    multi: true
+  },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: LoginInterceptorService,
+      multi: true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {

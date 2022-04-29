@@ -39,6 +39,11 @@ export class BookStoreService {
       .pipe(retry(3)).pipe(catchError(BookStoreService.errorHandler));
   }
 
+  getAllSearch(searchTerm: string): Observable<Array<Book>> {
+    return this.http.get<Array<Book>>(`${this.api}/books/search/${searchTerm}`)
+      .pipe(retry(3)).pipe(catchError(BookStoreService.errorHandler));
+  }
+
   private static errorHandler(error: Error | any): Observable<any> {
     return throwError(error);
   }

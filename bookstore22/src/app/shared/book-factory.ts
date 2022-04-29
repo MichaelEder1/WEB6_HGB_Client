@@ -17,7 +17,7 @@ export class BookFactory {
     );
   }
 
-  static formObject(rawBook: any): Book {
+  static fromObject(rawBook: any): Book {
     //cast from JSON Object via REST to Book Domain Model
     return new Book(
       rawBook.id,

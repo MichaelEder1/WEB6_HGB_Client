@@ -41,4 +41,7 @@
   </div>
 </div>
 <button routerLink="../" class="ui red button">Zurück zur Buchliste</button>
-<button (click)="removeBook()" class="ui red button labeled icon"><i class="remove icon"></i>Buch löschen</button>
+<button *ngIf="authService.isLoggedIn()" (click)="removeBook()" class="ui red button labeled icon"><i class="remove icon"></i>Buch löschen</button>
+<a *ngIf="authService.isLoggedIn()" class="ui yellow labeled icon button" [routerLink]="['../../admin', book?.isbn]">
+  <i class="write icon"></i> Buch bearbeiten
+</a>

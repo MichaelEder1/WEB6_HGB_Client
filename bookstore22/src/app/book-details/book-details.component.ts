@@ -4,6 +4,7 @@ import {ActivatedRoute, Router} from "@angular/router";
 import {Book} from "../shared/book";
 import {BookFactory} from "../shared/book-factory";
 import {ToastrService} from "ngx-toastr";
+import {AuthentificationService} from "../shared/authentification.service";
 
 @Component({
   selector: 'bs-book-details',
@@ -17,15 +18,22 @@ export class BookDetailsComponent implements OnInit {
   constructor(private bs: BookStoreService,
               private route: ActivatedRoute,
               private router: Router,
-              private toastr: ToastrService) {
+              private toastr: ToastrService,
+              public authService: AuthentificationService
+  ) {
   }
 
-  ngOnInit(): void {
+  ngOnInit()
+    :
+    void {
     const params = this.route.snapshot.params;
     this.bs.getSingle(params['isbn']).subscribe(b => this.book = b);
   }
 
-  getRating(num: number) {
+  getRating(num
+              :
+              number
+  ) {
     return new Array(num);
   }
 
